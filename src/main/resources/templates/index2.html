@@ -8,7 +8,7 @@
 <h1>Hello</h1>
 <p th:text="${#authorization.expression('isAuthenticated')}"></p>
 <h2>This is index.html!</h2>
-<div th:if="${studentList != null and !studentList.empty}">
+<div th:if="${studentList != null }">
     <table>
         <tr>
             <th>Name</th>
@@ -16,12 +16,12 @@
         <tr th:each="s : ${studentList}">
             <td th:text="${s.name}">Frank</td>
             <td th:text="${s.id}">Frank</td>
-<!--            <td><button th:formmethod="post" th:formaction="@{'/deleteStudentById/' + ${s.id}}" ></td>-->
+            <!--            <td><button th:formmethod="post" th:formaction="@{'/deleteStudentById/' + ${s.id}}" ></td>-->
             <td>  <form th:action="@{'/deleteStudentById/' + ${s.id}}" method="post">
                 <input type="hidden" name="_method" value="delete" />
                 <button type="submit">Delete</button>
             </form>
-<!--                <button th:formmethod="delete" th:formaction="@{'/deleteStudentById/' + ${s.id}}">Delete</button>-->
+                <!--                <button th:formmethod="delete" th:formaction="@{'/deleteStudentById/' + ${s.id}}">Delete</button>-->
             </td>
         </tr>
     </table>
@@ -36,6 +36,7 @@
                  th:field="*{name}"><br>
     <input type="submit" value="Save Student!">
 </form>
+
 
 </body>
 </html>

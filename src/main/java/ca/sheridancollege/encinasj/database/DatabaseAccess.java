@@ -29,4 +29,11 @@ public class DatabaseAccess {
     String query = "INSERT INTO student(name) VALUES (:name)";
     jdbc.update(query, namedParameters);
   }
+
+  public void deleteStudentById(Long id) {
+    MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+    namedParameters.addValue("id", id);
+    String query = "DELETE FROM student WHERE id = :id";
+    jdbc.update(query, namedParameters);
+  }
 }
