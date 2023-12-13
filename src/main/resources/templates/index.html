@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body>
+<h1>Hello</h1>
+<p th:text="${#authorization.expression('isAuthenticated')}"></p>
+<h2>This is index.html!</h2>
+<div th:if="${studentList != null and !studentList.empty}">
+    <table>
+        <tr>
+            <th>Name</th>
+        </tr>
+        <tr th:each="s : ${studentList}">
+            <td th:text="${s.name}">Frank</td>
+        </tr>
+    </table>
+</div>
+<br><hr><br>
+<form method="post"
+      th:action="@{/insertStudent}"
+      th:object="${student}">
+    <input type="hidden" name="id"
+           th:field="*{id}">
+    Name: <input type="text" name="name"
+                 th:field="*{name}"><br>
+    <input type="submit" value="Save Student!">
+</form>
+
+</body>
+</html>
